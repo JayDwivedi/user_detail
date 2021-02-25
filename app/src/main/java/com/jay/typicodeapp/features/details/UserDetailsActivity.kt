@@ -4,11 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.jay.typicodeapp.databinding.ActivityUserDetailsBinding
 import com.jay.typicodeapp.features.home.MainActivity
-import com.jay.typicodeapp.features.home.MainViewModel
 import com.jay.typicodeapp.services.data.UserData
 import dagger.hilt.android.AndroidEntryPoint
 

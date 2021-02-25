@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">User Info</string>
+    <string name="home_greeting">Hello user,</string>
+    <string name="btn_show_image">Show Image</string>
+
+    <string name="first_last_name">First Last Name:</string>
+    <string name="email">Email:</string>
+    <string name="city">City:</string>
+    <string name="company_name">Company Name:</string>
+
+</resources>
