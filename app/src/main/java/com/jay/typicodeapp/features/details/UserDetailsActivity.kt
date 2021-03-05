@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.jay.typicodeapp.databinding.ActivityUserDetailsBinding
+import com.jay.typicodeapp.features.home.CallbackInterface
 import com.jay.typicodeapp.features.home.MainActivity
 import com.jay.typicodeapp.services.data.UserData
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,8 +37,9 @@ class UserDetailsActivity : AppCompatActivity() {
                 tvLocation.text =
                     "Latitude: ${it.address.geo.lat}, Longitude: ${it.address.geo.lng}"
                 btnShowImage.setOnClickListener {
-                    MainActivity.loadImage( binding.ivMain)
-
+                    (intent.getSerializableExtra(CALLBACK_INTERFACE) as? CallbackInterface)?.onFetchImage(
+                        binding.ivMain
+                    )
                 }
             }
         } ?: finish()
@@ -47,9 +49,12 @@ class UserDetailsActivity : AppCompatActivity() {
 
         private const val USER_DATA_KEY = "user_data_key"
 
-        fun createIntent(userData: UserData, context: Context) =
+        private const val CALLBACK_INTERFACE = "interface"
+
+        fun createIntent(userData: UserData, callback: CallbackInterface, context: Context) =
             Intent(context, UserDetailsActivity::class.java).apply {
                 putExtra(USER_DATA_KEY, userData)
+                putExtra(CALLBACK_INTERFACE, callback)
             }
     }
 }

@@ -24,13 +24,6 @@ class MainActivity : AppCompatActivity() {
         UsersListAdapter(::onUserSelected)
     }
 
-    companion object {
-        fun loadImage(imageView: ImageView) = Glide.with(MainApplication.getApplicationContext())
-            .load("https://picsum.photos/200")
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .skipMemoryCache(true)
-            .into(imageView)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,6 +68,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onUserSelected(userData: UserData) {
-        startActivity(UserDetailsActivity.createIntent(userData, this))
+        startActivity(UserDetailsActivity.createIntent(userData, callbackInterface, this))
+    }
+    private val callbackInterface = object : CallbackInterface {
+        override fun onFetchImage(imageView: ImageView) {
+            imageView.visibility=View.VISIBLE
+            Glide.with(MainApplication.getApplicationContext())
+                .load("https:picsum.photos/200")
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(imageView)
+        }
     }
 }
