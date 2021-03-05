@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initUI()
-        initVM()
+        fetchNewUsers()
+
     }
 
     private fun initUI() {
@@ -42,28 +43,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun initVM() {
-        mainViewModel.loaderState.observe(this, {
-            reactOnLoader(it)
-        })
 
-        fetchNewUsers()
-    }
-
-    private fun reactOnLoader(it: Int) {
-        if (it == 0) binding.progressIndicator.visibility = View.GONE
-        else {
-            binding.rvUsersList.visibility = View.GONE
-            binding.progressIndicator.visibility = View.VISIBLE
-        }
-    }
 
     private fun fetchNewUsers() {
+        binding.progressIndicator.visibility = View.VISIBLE
         mainViewModel.getUsers().observe(this, {
             if (it.isNotEmpty()) {
                 usersListAdapter.updateUsers(it)
-                binding.rvUsersList.visibility = View.VISIBLE
+
             }
+            binding.progressIndicator.visibility = View.GONE
         })
     }
 
