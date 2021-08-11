@@ -7,5 +7,10 @@
     <string name="email">Email:</string>
     <string name="city">City:</string>
     <string name="company_name">Company Name:</string>
+    <string name="appwidget_text">Hello Jay</string>
+    <string name="add_widget">Add widget</string>
+    <string name="espresso_battery">Battery</string>
+    <string name="espresso_cloud">Cloud</string>
+    <string name="espresso_cal">Cal</string>
 
 </resources>

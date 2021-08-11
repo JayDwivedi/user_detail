@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#09C"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/widget_margin">
+
+    <TextView
+        android:id="@+id/appwidget_text"
+        style="@style/WidgetTextView.Big" />
+
+    <TextView
+        style="@style/WidgetTextView"
+        android:text="11:00" />
+
+    <TextView style="@style/WidgetButtonVerticalSpace" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Buttons go here -->
+
+        <LinearLayout
+            android:id="@+id/ristretto_button"
+            style="@style/WidgetBeverageButton">
+
+            <ImageView
+                style="@style/WidgetButtonImage"
+                android:src="@drawable/ic_baseline_battery_charging_full_24" />
+
+            <TextView
+                style="@style/WidgetButtonText"
+                android:text="@string/espresso_battery" />
+
+        </LinearLayout>
+
+        <TextView style="@style/WidgetButtonHorizontalSpace" />
+
+        <LinearLayout
+            android:id="@+id/espresso_button"
+            style="@style/WidgetBeverageButton">
+
+            <ImageView
+                style="@style/WidgetButtonImage"
+                android:src="@drawable/ic_baseline_cloud_24" />
+
+            <TextView
+                style="@style/WidgetButtonText"
+                android:text="@string/espresso_cloud" />
+
+        </LinearLayout>
+
+        <TextView style="@style/WidgetButtonHorizontalSpace" />
+
+        <LinearLayout
+            android:id="@+id/long_button"
+            style="@style/WidgetBeverageButton">
+
+            <ImageView
+                style="@style/WidgetButtonImage"
+                android:src="@drawable/ic_baseline_calendar_today_24" />
+
+            <TextView
+                style="@style/WidgetButtonText"
+                android:text="@string/espresso_cal" />
+
+        </LinearLayout>
+
+        <TextView style="@style/WidgetButtonHorizontalSpace" />
+
+
+    </LinearLayout>
+
+    <TextView style="@style/WidgetButtonVerticalSpace" />
+
+    <TextView
+        android:id="@+id/coffee_quote"
+        style="@style/WidgetQuote" />
+
+
+</LinearLayout>
