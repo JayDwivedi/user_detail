@@ -1,5 +1,6 @@
 package com.jay.typicodeapp.features.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -9,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.jay.typicodeapp.MainApplication
 import com.jay.typicodeapp.databinding.ActivityMainBinding
+import com.jay.typicodeapp.features.SakaVoiceRecognitionActivity
 import com.jay.typicodeapp.features.details.UserDetailsActivity
 import com.jay.typicodeapp.services.data.UserData
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,6 +37,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
+
+        binding.tvGreeting.setOnClickListener {
+
+
+            startActivity( Intent(this, SakaVoiceRecognitionActivity::class.java))
+        }
         binding.rvUsersList.adapter = usersListAdapter
 
         binding.root.setOnRefreshListener {

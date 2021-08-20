@@ -3,8 +3,12 @@ package com.jay.typicodeapp.widgets
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.RemoteViews
+import android.widget.TextView
 import com.jay.typicodeapp.R
+
 
 /**
  * Implementation of App Widget functionality.
@@ -39,6 +43,8 @@ internal fun updateUserListAppWidget(
     // Construct the RemoteViews object
     val views = RemoteViews(context.packageName, R.layout.user_list_app_widget)
     views.setTextViewText(R.id.tvGreetings, widgetText)
+
+
 
     // Instruct the widget manager to update the widget
     appWidgetManager.updateAppWidget(appWidgetId, views)

@@ -24,6 +24,7 @@
         android:gravity="center"
         android:loopViews="true" />
 
+
     <TextView
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
@@ -33,5 +34,6 @@
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold" />
+  
 
 </RelativeLayout>
