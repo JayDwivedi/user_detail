@@ -8,6 +8,12 @@
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
+
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -16,7 +22,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TypicodeApp">
-        <activity android:name=".features.SakaVoiceRecognitionActivity"></activity>
+        <activity android:name=".DroidSpeechActivity"></activity>
+        <activity android:name=".features.KontinuousSpeechRecognitionActivity" />
 
         <receiver android:name=".widgets.UserListAppWidget">
             <intent-filter>
@@ -46,9 +53,5 @@
             </intent-filter>
         </activity>
     </application>
-    <queries>
-        <intent>
-            <action android:name="android.speech.RecognitionService" />
-        </intent>
-    </queries>
+
 </manifest>

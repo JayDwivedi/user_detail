@@ -8,9 +8,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.jay.typicodeapp.DroidSpeechActivity
 import com.jay.typicodeapp.MainApplication
 import com.jay.typicodeapp.databinding.ActivityMainBinding
-import com.jay.typicodeapp.features.SakaVoiceRecognitionActivity
+import com.jay.typicodeapp.features.KontinuousSpeechRecognitionActivity
 import com.jay.typicodeapp.features.details.UserDetailsActivity
 import com.jay.typicodeapp.services.data.UserData
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,8 +41,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvGreeting.setOnClickListener {
 
+           // startActivity( Intent(this, SakaVoiceRecognitionActivity::class.java))
 
-            startActivity( Intent(this, SakaVoiceRecognitionActivity::class.java))
+            startActivity( Intent(this, DroidSpeechActivity::class.java))
         }
         binding.rvUsersList.adapter = usersListAdapter
 
