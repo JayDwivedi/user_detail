@@ -7,6 +7,9 @@
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
 
     <queries>
         <intent>
@@ -19,11 +22,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:launchMode="singleTop"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TypicodeApp">
-        <activity android:name=".DroidSpeechActivity"></activity>
-        <activity android:name=".features.KontinuousSpeechRecognitionActivity" />
+
 
         <receiver android:name=".widgets.UserListAppWidget">
             <intent-filter>
@@ -48,10 +51,31 @@
         <activity android:name=".features.home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.speech.action.RECOGNIZE_SPEECH" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".services.VoiceRecognitionService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="false">
+
+            <intent-filter>
+                <action android:name="com.package.name.START_SERVICE" />
+                <action android:name="android.speech.RecognitionService" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+        <receiver android:name=".ReceiverCall">
+            <intent-filter>
+                <action android:name="com.jay.typicodeapp" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
