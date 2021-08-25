@@ -17,6 +17,8 @@ import android.widget.Toast
 
 class VoiceRecognitionService : Service(), RecognitionListener {
 
+    private lateinit var audioManager: AudioManager
+    private var current_volume: Int=5
     private var speechRecognizer: SpeechRecognizer? = null
 
 
@@ -31,6 +33,11 @@ class VoiceRecognitionService : Service(), RecognitionListener {
     }
 
     private fun startListening() {
+
+         audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
+       // current_volume = audioManager.getStreamVolume(AudioManager.STREAM_RING)
+        audioManager.setStreamMute(AudioManager.STREAM_RING, true);
+       // audioManager.setStreamVolume(AudioManager.STREAM_RING, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE)
         if (speechRecognizer == null) {
             speechRecognizer = SpeechRecognizer.createSpeechRecognizer(applicationContext)
             speechRecognizer?.setRecognitionListener(this)
@@ -94,10 +101,14 @@ class VoiceRecognitionService : Service(), RecognitionListener {
         if (matches?.contains("ok monster") == true) {
 
             // do your action, for now i am stopping the service
+//            audioManager.setStreamVolume(AudioManager.STREAM_RING, current_volume,
+//                AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE)
+            audioManager.setStreamMute(AudioManager.STREAM_RING, false);
                 this.stopSelf()
+
             Toast.makeText(
                 this,
-                "word matched:- " + (matches?.get(0)?.toString() ?: ""+ "Service will stop"),
+                "word matched:- " + (matches?.get(0)?.toString() ?: "" + "Service will stop"),
                 Toast.LENGTH_LONG
             ).show()
 
